@@ -39,16 +39,33 @@ namespace Algoritmos
 
             //pilha.PrintStack();
 
-            QueueAlgorithm fila = new QueueAlgorithm();
+            CircularQueue circular = new CircularQueue();
+            Random number = new Random();
 
-            fila.Enqueue(5);
-            fila.Enqueue(6);
-            fila.Enqueue(7);
-            fila.Enqueue(8);
-            fila.Enqueue(14);
-            fila.Enqueue(60);
+            for (var i = 0;i < 10;i++)
+            {
+                if (!circular.IsFull())
+                {
+                    circular.Enqueue(number.Next(2, 32));
+                }
+            }
 
-            
+            circular.PrintCircularQueue();
+
+            circular.Enqueue(9);
+
+            var l = 0;
+
+            while (l <= 5)
+            {
+                circular.Dequeue();
+                l++;
+            }
+
+            circular.Dequeue();
+
+            circular.PrintCircularQueue();
+
         }
     }
 }

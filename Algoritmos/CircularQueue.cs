@@ -46,12 +46,12 @@ namespace Algoritmos
             if (IsFull())
             {
                 Console.WriteLine("Fila está cheia!");
+                return;
             }
 
             if(IsEmpty())
             {
                 Front = 0;
-                Rear = 0;
             }
 
             Rear = (Rear + 1) % Tamanho;
@@ -64,9 +64,15 @@ namespace Algoritmos
             if (IsEmpty())
             {
                 Console.WriteLine("Fila está vazia!");
+
+                return;
             }
 
             int data = Fila[Front];
+
+            Front = (Front + 1) % Tamanho;
+
+            Console.WriteLine($"Elemento deletado {data}");
 
             if (Front == Rear)
             {
@@ -75,10 +81,20 @@ namespace Algoritmos
 
                 return;
             }
+        }
 
-            Front = (Front + 1) % Tamanho;
+        public void PrintCircularQueue()
+        {
+            if (IsEmpty())
+            {
+                Console.WriteLine("Fila vazia");
+                return;
+            }
 
-            Console.WriteLine($"Elemento deletado {data}");
+            foreach (var item in Fila)
+            {
+                Console.WriteLine($"item: {item}");
+            }
         }
     }
 }
